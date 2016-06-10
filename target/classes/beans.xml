@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- HelloWorld helloWorld = new HelloWord -->
+	<bean id="helloWorld" class="org.hao.model.HelloWorld" scope="prototype">
+		<!-- collaborators and configuration for this bean go here -->
+	</bean>
+	
+	<bean id="userDao" class="org.hao.dao.UserDao"></bean>
+	<bean id="userService" class="org.hao.service.UserService">
+		<property name="userDao" ref="userDao" />
+	</bean>
+	<!-- Action user need to be prototype -->
+	<bean id="userAction" class="org.hao.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+
+
+	<!-- more bean definitions go here -->
+
+</beans>
